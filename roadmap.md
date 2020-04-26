@@ -1,5 +1,13 @@
 Sklep internegowy - roadmapa
+- wyświetlenie strony startowej
 - crud dla kategorii
+    - kontroler dla kategorii
+    - serwis
+    - repozytorium
+    - category entity
+    - html
+    - stylowanie
+    - walidacje po obu stronach
 - crud dla towarów
 - obsługa koszyka
 - panel administracyjny
