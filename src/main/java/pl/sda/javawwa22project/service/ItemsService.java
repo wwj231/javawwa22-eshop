@@ -39,7 +39,7 @@ public class ItemsService {
   }
 
   // find item by id...
-  Optional<Item> findItemById(Long id) {
+  public Optional<Item> findItemById(Long id) {
     logger.info("findItemById() with id: [{}]", id);
     var foundItem = itemsRepository.findById(id);
 
