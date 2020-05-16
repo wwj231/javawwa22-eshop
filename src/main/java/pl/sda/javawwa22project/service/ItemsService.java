@@ -4,9 +4,14 @@ package pl.sda.javawwa22project.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import pl.sda.javawwa22project.entity.Item;
 import pl.sda.javawwa22project.respository.ItemsRepository;
 
+import java.util.List;
+import java.util.Optional;
+
 //@Slf4j
+// 3). create service and add required operations
 @Service
 public class ItemsService {
 
@@ -24,4 +29,22 @@ public class ItemsService {
     // warn
     // error
   }
+
+  public List<Item> findAllItems() {
+   var allItems = itemsRepository.findAll();
+
+   logger.debug("items from repository: {}", allItems); // []
+   logger.info("number of found items: [{}]", allItems.size());
+   return allItems;
+  }
+
+  // find item by id...
+  Optional<Item> findItemById(Long id) {
+    logger.info("findItemById() with id: [{}]", id);
+    var foundItem = itemsRepository.findById(id);
+
+    logger.info("found item: [{}]", foundItem.orElse(null));
+    return foundItem;
+  }
+
 }
