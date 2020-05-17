@@ -12,6 +12,7 @@ import pl.sda.javawwa22project.service.ItemsService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 // 4). define endpoint in controller
 @Controller
@@ -38,7 +39,7 @@ public class ItemController {
             .orElse(null);
 
         model.addAttribute(ITEM_KEY, itemDto);
-        return "";
+        return "items/show-item-page";
     }
 
     // method reference example
