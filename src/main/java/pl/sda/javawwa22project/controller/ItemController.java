@@ -18,6 +18,7 @@ import java.util.List;
 public class ItemController {
 
     private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
+    private static final String ITEM_KEY = "itemsToShow";
 
     private final ItemsService itemsService;
     private final ItemConverter itemConverter;
@@ -31,14 +32,28 @@ public class ItemController {
     // /items/1024
     @GetMapping("/items/{id}")
     String displayItemById(@PathVariable Long id, Model model) {
+        logger.info("displayItemById with id: [{}]", id);
         var itemDto = itemsService.findItemById(id)
-            .map(item -> itemConverter.fromItem(item))
+            .map(itemConverter::fromItem)
             .orElse(null);
 
-        model.addAttribute("item", itemDto);
+        model.addAttribute(ITEM_KEY, itemDto);
         return "";
     }
 
+    // method reference example
+//    static class Sorter {
+//        static int orderItems(Item one, Item two) {
+//            return -1;
+//        }
+//    }
+//    private void sortItems() {
+//        Stream.of(
+//            new Item(1L, null, null, null, null, 5, null),
+//            new Item(1L, null, null, null, null, 5, null)
+//            )
+//            .sorted(Sorter::orderItems);
+//    }
     // TODO
     // metoda wyświetla 3 przykładowe przedmioty
     @GetMapping("all-items")
