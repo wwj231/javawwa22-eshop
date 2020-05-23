@@ -60,7 +60,7 @@ public class ItemController {
     @GetMapping("/add-item")
     public String addItem(Model model){
         logger.info("addItem()");
-        model.addAttribute(ITEM_DTO, new ItemDto());
+        model.addAttribute(ITEM_DTO, ItemDto.builder().build());
         model.addAttribute(CURRENT_OPERATION, "Adding new item");
         return "items/add-edit";
     }
