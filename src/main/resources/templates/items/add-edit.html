@@ -7,20 +7,20 @@
 <body>
 <p th:text="${current_operation}">Operation...</p>
 <form method="post" action="#" th:object="${itemDto}" th:action="@{/item-save}">
-    <label for="itemName">Item Name:</label><br />
-    <input id="itemName" type="text" th:field="*{itemName}"><br/>
+    <label for="itemNameId">Item Name:</label><br />
+    <input id="itemNameId" name="itemName" type="text" th:field="*{itemName}"><br/>
 
-    <label for="description">Description:</label><br />
-    <input id="description" type="text" th:field="*{description}"><br/>
+    <label for="descriptionId">Description:</label><br />
+    <input id="descriptionId" name="description" type="text" th:field="*{description}"><br/>
 
-    <label for="category">Category:</label><br />
-        <input id="category" type="text" th:field="*{category}"><br/>
+    <label for="categoryId">Category:</label><br />
+        <input id="categoryId" name="category" type="text" th:field="*{category}"><br/>
 
-    <label for="price">Price:</label><br />
-        <input id="price" type="number" th:field="*{price}"><br/>
+    <label for="priceId">Price:</label><br />
+        <input id="priceId" name="price" type="number" th:field="*{price}"><br/>
 
-    <label for="quantity">Quantity:</label><br />
-        <input id="quantity" type="number" th:field="*{quantity}"><br/>
+    <label for="quantityId">Quantity:</label><br />
+        <input id="quantityId" name="quantity" type="number" value="1" th:field="*{quantity}"><br/>
     <input type="submit" value="Submit">
 </form>
 </body>
