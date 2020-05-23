@@ -21,6 +21,8 @@ public class ItemController {
     private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
     private static final String ONE_ITEM_KEY = "itemsToShow";
     private static final String MANY_ITEMS_KEY = "items";
+    private static final String CURRENT_OPERATION = "current_operation";
+    private static final String ITEM_DTO = "itemDto";
 
     private final ItemsService itemsService;
     private final ItemConverter itemConverter;
@@ -58,11 +60,14 @@ public class ItemController {
     @GetMapping("/add-item")
     public String addItem(Model model){
         logger.info("addItem()");
-        return "items/add-edt";
+        model.addAttribute(ITEM_DTO, new ItemDto());
+        model.addAttribute(CURRENT_OPERATION, "Adding new item");
+        return "items/add-edit";
     }
 
     @PostMapping("/item-save")
     public String saveItem(@Valid ItemDto itemToSave){
+        logger.info("saveItem(), received param: [{}]", itemToSave);
         return "redirect://items/" + itemToSave.getId();
     }
     // method reference example
