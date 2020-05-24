@@ -54,4 +54,9 @@ public class ItemsService {
         logger.info("after saving: [{}]", savedItem);
         return savedItem;
     }
+
+    public void deleteItemById(final Long id) {
+        logger.info("deleteItemById(): [{}]");
+        itemsRepository.deleteById(id);
+    }
 }

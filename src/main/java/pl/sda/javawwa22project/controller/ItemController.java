@@ -1,5 +1,6 @@
 package pl.sda.javawwa22project.controller;
 
+import org.dom4j.rule.Mode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -48,6 +49,13 @@ public class ItemController {
 
         model.addAttribute(ONE_ITEM_KEY, itemDto);
         return "items/show-item-page";
+    }
+
+    @GetMapping("/item-delete/{id}")
+    public String deleteItemById(Model model, @PathVariable Long id){
+        logger.info("deleteItemById(): [{}]", id);
+        itemsService.deleteItemById(id);
+        return "redirect:/all-items";
     }
 
     @GetMapping("/all-items")
