@@ -60,7 +60,7 @@ public class ItemController {
     @GetMapping("/add-item")
     public String addItem(Model model){
         logger.info("addItem()");
-        model.addAttribute(ITEM_DTO, new ItemDto());
+        model.addAttribute(ITEM_DTO, ItemDto.builder().build());
         model.addAttribute(CURRENT_OPERATION, "Adding new item");
         return "items/add-edit";
     }
@@ -68,7 +68,9 @@ public class ItemController {
     @PostMapping("/item-save")
     public String saveItem(@Valid ItemDto itemToSave){
         logger.info("saveItem(), received param: [{}]", itemToSave);
-        return "redirect://items/" + itemToSave.getId();
+        var item = itemConverter.fromDto(itemToSave);
+        var savedItem = itemsService.saveItem(item);
+        return "redirect:/items/" + savedItem.getId();
     }
     // method reference example
 //    static class Sorter {
