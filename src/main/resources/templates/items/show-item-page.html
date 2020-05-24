@@ -14,5 +14,7 @@
     <p th:text="'Item price: ' + (${itemsToShow.price} ?: 'No item')">Item price:</p>
     <p th:text="'Item quantity: ' + (${itemsToShow.quantity} ?: 'No item')">Item quantity:</p>
     <p th:text="'Item picture: ' + (${itemsToShow.picture} ?: 'No item')">Item picture:</p>
+    <br />
+    <a th:href="@{/all-items}" href="#">Return to all items</a>
 </body>
 </html>
